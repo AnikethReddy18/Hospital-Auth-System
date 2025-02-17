@@ -26,9 +26,9 @@ function Signup() {
 
     return ( <>
     <form onSubmit={handleFormSubmission}>
-        <input type="text" placeholder="Hospital(Admin) Name" onChange={(e)=>setName(e.target.value)}/>
-        <input type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
-        <input type="password" placeholder="Confirm Password" onChange={handelConfPassChange}/>
+        <input type="text" placeholder="Hospital(Admin) Name" value={name} onChange={(e)=>setName(e.target.value)}/>
+        <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
+        <input type="password" placeholder="Confirm Password" value={confirmPass} onChange={handelConfPassChange}/>
         {error}
         <button>Signup</button>
     </form>
