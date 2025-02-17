@@ -7,7 +7,7 @@ export async function signupController(req, res){
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await createAdmin(name, hashedPassword)
-    res.send(200)
+    res.sendStatus(200)
 }
 
 export async function loginController(req, res){

@@ -1,5 +1,5 @@
-import { addEmployee, addRoom, getRoom, logEmployeeMovement, getEmployee } from "../queries.js"
-import { getAllLogsByAdmin, getEmployeeLogs, getRoomLogs } from "../queries.js"
+import { addEmployee, addRoom, getRoom, logEmployeeMovement, getEmployee, getRoomsByAdmin } from "../queries.js"
+import { getAllLogsByAdmin, getEmployeeLogs, getRoomLogs, getEmployeesByAdmin } from "../queries.js"
 
 export async function createEmployee(req, res) {
     const adminId = req.user.id
@@ -35,7 +35,6 @@ export async function logMovement(req, res) {
 
 export async function getLogMovements(req, res){
     const adminId = req.user.id
-
     const logs = await getAllLogsByAdmin(adminId);
 
     res.json({logs})
@@ -53,4 +52,18 @@ export async function getLogMovementsByRoom(req, res){
 
     const logs = await getRoomLogs(roomId)
     res.json(logs)
+}
+
+export async function getEmployees(req, res){
+    const adminId = req.user.id
+
+    const employees = await getEmployeesByAdmin(adminId)
+    res.json(employees)
+}
+
+export async function getRooms(req, res){
+    const adminId = req.user.id
+
+    const rooms = await getRoomsByAdmin(adminId)
+    res.json(rooms)
 }

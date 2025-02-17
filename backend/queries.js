@@ -52,6 +52,16 @@ export async function getEmployee(id) {
     return emp
 }
 
+export async function getEmployeesByAdmin(adminId){
+    const emps = await prisma.employee.findMany({
+        where:{
+            adminId
+        }
+    })
+
+    return emps
+}
+
 export async function deleteEmployee(id) {
     await prisma.employee.delete({
         where: {
@@ -130,4 +140,14 @@ export async function getRoomLogs(roomId){
     })
 
     return logs
+}
+
+export async function getRoomsByAdmin(adminId){
+    const rooms = await prisma.room.findMany({
+        where:{
+            adminId
+        }
+    })
+
+    return rooms
 }
