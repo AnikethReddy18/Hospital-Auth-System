@@ -117,7 +117,8 @@ export async function getEmployeeLogs(employeeId) {
         },
 
         include:{
-            room: true
+            room: true,
+            employee: true
         }
     })
 
@@ -135,7 +136,8 @@ export async function getRoomLogs(roomId){
         },
 
         include: {
-            employee: true
+            employee: true,
+            room: true
         }
     })
 
