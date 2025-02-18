@@ -7,6 +7,8 @@ import Signup from './pages/signup.jsx'
 import Login from './pages/login.jsx'
 import LogsOfRoom from './pages/logsOfRoom.jsx'
 import LogsOfEmployee from './pages/logsOfEmployee.jsx'
+import CreateRoom from './pages/createRoom.jsx'
+import CreateEmployee from './pages/createEmployee.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -17,6 +19,8 @@ createRoot(document.getElementById('root')).render(
         <Route path='/login' element={<Login />} />
         <Route path='/logs/emp/:id' element={<LogsOfEmployee />} />
         <Route path='/logs/room/:id' element={<LogsOfRoom />} />
+        <Route path='/create/room' element={<CreateRoom />} />
+        <Route path='/create/emp' element={<CreateEmployee />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

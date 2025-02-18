@@ -34,8 +34,21 @@ function App() {
 
   return (<>
     <LatestLogs />
-    {employees.map((value, index)=><Link to={"/logs/emp/"+value.id} key={index}>{value.name}</Link>)}
-    {rooms.map((value, index)=><Link to={"/logs/room/"+value.id} key={index}>{value.name}</Link>)}
+    <h1>Employees:</h1>
+
+    <div className="employees">
+      {employees.map((value, index)=><Link to={"/logs/emp/"+value.id} key={index}>{value.name}</Link>)}
+    </div>
+
+    <h1>Rooms:</h1>
+    <div className="rooms">
+      {rooms.map((value, index)=><Link to={"/logs/room/"+value.id} key={index}>{value.name}</Link>)}
+    </div>
+
+    <h1>Add:</h1>
+    <Link to="/create/room">Add Room</Link>
+    <br></br>
+    <Link to="/create/emp">Add Employee</Link>
   </>)
 }
 
