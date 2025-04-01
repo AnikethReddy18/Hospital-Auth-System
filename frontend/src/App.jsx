@@ -32,24 +32,30 @@ function App() {
 
   }, [])
 
-  return (<>
+  return (<>  
+    <div className="container">
+      <h1 className="section-title">Employees</h1>
+      <div className="grid">
+        {employees.map((value) => (
+          <Link to={"/logs/emp/" + value.id} key={value.id} className="card emp-card">
+            {value.name}
+          </Link>
+        ))}
+      </div>
+  
+      <h1 className="section-title">Rooms</h1>
+      <div className="grid">
+        {rooms.map((value) => (
+          <Link to={"/logs/room/" + value.id} key={value.id} className="card room-card">
+            {value.name}
+          </Link>
+        ))}
+      </div>
+    </div>
     <LatestLogs />
-    <h1>Employees:</h1>
-
-    <div className="employees">
-      {employees.map((value, index)=><Link to={"/logs/emp/"+value.id} key={index}>{value.name}</Link>)}
-    </div>
-
-    <h1>Rooms:</h1>
-    <div className="rooms">
-      {rooms.map((value, index)=><Link to={"/logs/room/"+value.id} key={index}>{value.name}</Link>)}
-    </div>
-
-    <h1>Add:</h1>
-    <Link to="/create/room">Add Room</Link>
-    <br></br>
-    <Link to="/create/emp">Add Employee</Link>
-  </>)
+  </>
+  
+  )
 }
 
 export default App

@@ -4,7 +4,8 @@ import apiClient from '../apiClient'
 
 function LogsOfEmployee() {
     const params = useParams()
-    const [logs, setLogs] = useState()
+    const [logs, setLogs] = useState([])
+    const [empData, setEmpData] = useState({name: "Employee Name", role: "Employee Role"})
 
     useEffect(()=>{
         async function getLogs(){
@@ -12,17 +13,32 @@ function LogsOfEmployee() {
                 headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
             })
 
-            const data = response.data.map((log) => [log.employeeId, log.employee.name, new Date(log.timestamp).toLocaleDateString(), log.roomId, log.room.name])
+            setEmpData({name: response.data.logs[0].employee.name, role: response.data.logs[0].employee.role})
+
+            const data = response.data.logs.map((log) => ({
+                date: new Date(log.timestamp).toLocaleDateString(),
+                roomName: log.room.name,
+            }));
+
             setLogs(data)
         }
         getLogs()
     }, [])
 
-    return ( <>
-    {logs && logs.map((value, index) => {
-            return <div key={index}>{value[0] + ' ' +  value[1] + ' ' + value[2] + ' ' + value[4]}</div>
-        })}
-    </> );
+    return (<div className="logs-container">
+        <h3 className="logs-title">{empData.name}'s Logs ({empData.role})</h3>
+        {logs.length === 0 ? (
+            <div className="no-logs">No logs available.</div>
+        ) : (
+            <ul className="logs-list">
+                {logs.map((log, index) => (
+                    <li key={index} className="log-item">
+                        <strong> {log.date} - {log.roomName}</strong>
+                    </li>
+                ))}
+            </ul>
+        )}
+    </div> );
 }
 
 export default LogsOfEmployee;
