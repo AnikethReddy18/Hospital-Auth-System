@@ -102,6 +102,7 @@ export async function getAllLogsByAdmin(adminId) {
         },
     });
 
+    
     return logs;
 
 }
@@ -140,7 +141,6 @@ export async function getRoomLogs(roomId){
             room: true
         }
     })
-
     return logs
 }
 

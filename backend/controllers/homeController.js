@@ -44,14 +44,14 @@ export async function getLogMovementsByEmployee(req, res){
     const employeeId = req.params.id
 
     const logs = await getEmployeeLogs(employeeId)
-    res.json(logs)
+    res.json({logs})
 }
 
 export async function getLogMovementsByRoom(req, res){
     const roomId = req.params.id
 
     const logs = await getRoomLogs(roomId)
-    res.json(logs)
+    res.json({logs})
 }
 
 export async function getEmployees(req, res){
